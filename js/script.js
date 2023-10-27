@@ -3,7 +3,7 @@ const main = document.querySelector('.wrapper');
 // const grid = document.createElement('div');
 // grid.classList.add('grid');
 // grid.classList.add('d-none');
-grid = genCells(100);
+grid = genCells(49);
 // main.append(grid);
 
 const play = document.querySelector('.btn-play');
@@ -33,6 +33,7 @@ function genCells(cellNumber) {
         const curCell = i;
         cell = document.createElement('div');
         cell.classList.add('cell');
+        cell.style.width = `calc(100% / ${Math.sqrt(cellNumber)})`;
         cell.textContent = curCell;
         grid.append(cell);
     }
