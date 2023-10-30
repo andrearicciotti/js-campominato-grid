@@ -5,6 +5,7 @@
     --bg-col-header: rgb(200, 200, 200);
     --bg-col-footer: rgb(200, 200, 200);
     --bg-col-main:;
+    --bg-col-cell-lblue: lightblue;
 
     --header-height: 80px;
     --footer-height: 80px;
@@ -37,6 +38,10 @@ img {
     display: none;
 }
 
+.bg-lightblue {
+    background-color: lightblue;
+}
+
 
 
 /* HEADER */
@@ -54,6 +59,13 @@ img {
     justify-content: space-between;
 }
 
+.actions {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 /* MAIN */
@@ -86,7 +98,9 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} 
+
+
 
 
 /* FOOTER */

@@ -1,16 +1,32 @@
 // PROGRAM LOGIC
 const main = document.querySelector('.wrapper');
-// const grid = document.createElement('div');
-// grid.classList.add('grid');
-// grid.classList.add('d-none');
-grid = genCells(49);
-// main.append(grid);
+
+const grid = document.createElement('div');
+grid.classList.add('grid');
 
 const play = document.querySelector('.btn-play');
-play.addEventListener ("click", function() {
-    main.append(grid);
-})
+play.addEventListener("click", function () {
+    const difficult = document.getElementById('difficult').value;
+    console.log(difficult);
 
+    let squareSize = "";
+
+    if (difficult === "hard") {
+        squareSize = 49;
+    } else if (difficult === "medium") {
+        squareSize = 81;
+    } else {
+        squareSize = 100
+    }
+    
+    for (let i = 1; i <= squareSize; i++) {
+        const newCell = genCells([i], Math.sqrt(squareSize));
+        console.log(newCell);
+        grid.append(newCell);
+        main.append(grid);
+    }
+    console.log(grid.innerHTML);
+})
 
 
 
@@ -23,20 +39,17 @@ play.addEventListener ("click", function() {
  * @param {number} cellNumber
  * @returns {any} grid html element
  */
-function genCells(cellNumber) {
+function genCells(cellNumber, squareSize) {
 
-    const grid = document.createElement('div');
-    grid.classList.add('grid');    
-    
-    let cell = "";
-    for (i = 1; i <= cellNumber; i++) {
-        const curCell = i;
-        cell = document.createElement('div');
-        cell.classList.add('cell');
-        cell.style.width = `calc(100% / ${Math.sqrt(cellNumber)})`;
-        cell.textContent = curCell;
-        grid.append(cell);
-    }
+    const cell = document.createElement('div'); 
+    cell.classList.add('cell');
+    cell.style.width = `calc(100% / ${squareSize})`;
+    cell.textContent = cellNumber;
+    cell.addEventListener("click", function () {
+        cell.classList.add('bg-lightblue');
+        console.log(cell);
+    })
 
-    return grid;
+    return cell;
 }
+
